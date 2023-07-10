@@ -13,6 +13,7 @@ class ImagePreviewView extends StatefulWidget {
   _ImagePreviewViewState createState() => _ImagePreviewViewState();
 }
 
+// adriano teste
 class _ImagePreviewViewState extends State<ImagePreviewView> {
   @override
   void initState() {
@@ -73,7 +74,7 @@ class _ImagePreviewViewState extends State<ImagePreviewView> {
     var decodedImage;
 
     decodedImage = await decodeImageFromList(widget.file.readAsBytesSync());
-   
+
     return decodedImage.width.toDouble();
   }
 }
