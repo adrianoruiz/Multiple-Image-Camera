@@ -48,17 +48,18 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
 
   Widget _animatedButton() {
     return Container(
+      margin: const EdgeInsets.only(top: 10),
       height: 70,
       width: 150,
       decoration: BoxDecoration(
-        color: Colors.white38,
+        color: Colors.black,
         borderRadius: BorderRadius.circular(100.0),
       ),
       child: const Center(
         child: Text(
-          'Done',
+          'Concluir',
           style: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
     );
@@ -193,7 +194,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
                 child: IconButton(
                   iconSize: 40,
                   icon: const Icon(
-                    Icons.camera_front,
+                    Icons.sync,
                     color: Colors.white,
                   ),
                   onPressed: _onCameraSwitch,
@@ -289,7 +290,7 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
 
     try {
       await _controller!.initialize();
-    // ignore: empty_catches
+      // ignore: empty_catches
     } on CameraException {}
     if (mounted) {
       setState(() {});
@@ -335,8 +336,8 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
                   onTap: () {
                     for (int i = 0; i < imageFiles.length; i++) {
                       File file = File(imageFiles[i].path);
-                      imageList.add(MediaModel.blob(
-                          file, "", file.readAsBytesSync()));
+                      imageList.add(
+                          MediaModel.blob(file, "", file.readAsBytesSync()));
                     }
                     Navigator.pop(context, imageList);
                   },
@@ -362,7 +363,6 @@ class _CameraFileState extends State<CameraFile> with TickerProviderStateMixin {
     } else {
       _animationController.dispose();
     }
-
 
     super.dispose();
   }
